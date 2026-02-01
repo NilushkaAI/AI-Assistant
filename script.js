@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadedFilesPreview = document.getElementById('uploadedFilesPreview'); // New element
 
     // --- Gemini API Configuration ---
-    const GEMINI_API_KEY = "AIzaSyB4wcAUKq06D9rXcwr5megwAMZak3PC_RY";
+    const GEMINI_API_KEY = "AIzaSyD9BN30N8ky9qa2mynWjvpf9WowFlrknwQ";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`;
 
     let currentChatHistory = [];
@@ -725,4 +725,5 @@ document.addEventListener('DOMContentLoaded', () => {
             populateVoiceSelection();
         }
     }
+
 });
