@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadedFilesPreview = document.getElementById('uploadedFilesPreview'); // New element
 
     // --- Gemini API Configuration ---
-    const GEMINI_API_KEY = "AIzaSyDTTqivhDq5t3WU_KMHdeXghIZvexqnoi0";
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const GEMINI_API_KEY = "AIzaSyB4wcAUKq06D9rXcwr5megwAMZak3PC_RY";
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`;
 
     let currentChatHistory = [];
     let voiceModeRecognition;
@@ -118,7 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const textParagraph = document.createElement('p');
-        textParagraph.innerHTML = text; // Use innerHTML for line breaks/bolding from AI
+        // IMPORTANT CHANGE: Parse Markdown for bot messages
+        if (sender === 'bot') {
+            textParagraph.innerHTML = marked.parse(text); // Use marked.parse for bot responses
+        } else {
+            textParagraph.textContent = text; // For user messages, just use textContent
+        }
+        
         messageElement.appendChild(textParagraph);
 
         chatBox.appendChild(messageElement);
